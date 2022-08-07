@@ -7,7 +7,7 @@ contract StoreUpdater is FxBaseRootTunnel {
 
     constructor(
 		address _checkpointManager, address _fxRoot
-	) FxBaseRootTunnel(_checkpointManager, _fxRoot) {}
+	) FxBaseRootTunnel(_checkpointManager, _fxRoot) { }
 
     function _processMessageFromChild(bytes memory message) 
 		internal 
@@ -17,7 +17,7 @@ contract StoreUpdater is FxBaseRootTunnel {
 		// PASS
 	}
 
-	function AddCollection(address newCollection) public {
+	function addCollection(address newCollection) public {
 		_sendMessageToChild(abi.encode(newCollection));
 	}
 
