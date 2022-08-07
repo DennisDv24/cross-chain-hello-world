@@ -1,9 +1,25 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-//import "@fxstore/contracts/tunnel/FxBaseRootTunnel.sol";
+import "@fxportal/contracts/tunnel/FxBaseRootTunnel.sol";
 
-contract StoreUpdater {
-		
+contract StoreUpdater is FxBaseRootTunnel {
+
+    constructor(
+		address _checkpointManager, address _fxRoot
+	) FxBaseRootTunnel(_checkpointManager, _fxRoot) {}
+
+    function _processMessageFromChild(bytes memory message) 
+		internal 
+		virtual
+		override
+	{
+		// PASS
+	}
+
+	function AddCollection(address newCollection) public {
+		_sendMessageToChild(abi.encode(newCollection));
+	}
+
 
 }

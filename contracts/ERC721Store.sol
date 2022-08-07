@@ -2,8 +2,6 @@
 pragma solidity ^0.8.0;
 
 import "@fxportal/contracts/tunnel/FxBaseChildTunnel.sol";
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
 
 contract ERC721Store is FxBaseChildTunnel {
 	
@@ -13,19 +11,14 @@ contract ERC721Store is FxBaseChildTunnel {
 		// TODO
 	}
 	
-
-	bytes private _toStore;
+	/*
+	 * @param message abi encoded ERC721 address to store
+	 */
 	function _processMessageFromRoot(
 		uint256 stateId, address sender, bytes memory message
 	) internal virtual override {
-		// TODO
-		_toStore = message;
+		// TODO require(sender == expected)
+		_collections.push(abi.decode(message, (address)));
 	}
-
-	function testEncoding(address toTest) public returns (address) {
-		bytes memory addrEncoded = abi.encode(toTest);
-		return abi.decode(addrEncoded, (address));
-	}
-		
 
 }
