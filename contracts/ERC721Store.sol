@@ -15,7 +15,6 @@ contract ERC721Store is FxBaseChildTunnel {
 	function _processMessageFromRoot(
 		uint256 stateId, address sender, bytes memory message
 	) internal virtual override {
-		// TODO require(sender == expected)?
 		_collections.push(abi.decode(message, (address)));
 	}
 
