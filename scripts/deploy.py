@@ -9,9 +9,7 @@ get_acc = lambda: accounts[0] if (
     network.show_active() in LOCAL_ENVS
 ) else accounts.add(config['wallets']['from_key'])
 
-ask_for_verify = lambda x: True if (
-    input(f'Should verify {x}? y/N: ').lower() == 'y'
-) else False
+ask_for_verify = lambda x: input(f'Should verify {x}? y/N: ').lower() == 'y'
 
 from_me = lambda: {'from': get_acc()}
 

@@ -5,7 +5,7 @@ import "@fxportal/contracts/tunnel/FxBaseChildTunnel.sol";
 
 contract ERC721Store is FxBaseChildTunnel {
 	
-	address[] private _collections; 
+	address[] private _collections;
 
 	constructor(address _fxChild) FxBaseChildTunnel(_fxChild) { }
 	
